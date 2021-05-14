@@ -125,7 +125,7 @@ def _save_cache(cache):
     # TODO: Save the cache, if it has changed
     if cache.has_state_changed:
         session["token_cache"] = cache.serialize()
-    pass
+    #pass
 
 def _build_msal_app(cache=None, authority=None):
     # TODO: Return a ConfidentialClientApplication
