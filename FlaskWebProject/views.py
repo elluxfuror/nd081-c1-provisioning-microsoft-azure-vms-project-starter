@@ -21,6 +21,7 @@ imageSourceUrl = 'https://'+ app.config['BLOB_ACCOUNT']  + '.blob.core.windows.n
 def home():
     user = User.query.filter_by(username=current_user.username).first_or_404()
     posts = Post.query.all()
+    app.logger.debug("we made it to def home")
     return render_template(
         'index.html',
         title='Home Page',
@@ -60,9 +61,9 @@ def post(id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    app.logger.info('login process initiated!')
+    app.logger.debug('login process initiated!')
     if current_user.is_authenticated:
-        app.logger.info('login success!')
+        app.logger.debug('login success!')
         return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
